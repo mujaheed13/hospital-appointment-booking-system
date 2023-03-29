@@ -1,16 +1,16 @@
 import React from 'react'
 import Footer from '../../components/Footer'
-import Midsection from '../../components/Midsection'
+import Login from '../../components/login'
 import Navbar from '../../components/Navbar'
 
-const homepage = () => {
+const Loginpage = () => {
   return (
     <>
     <Navbar/>
-    <Midsection/>
+    <Login/>
     <Footer/>
     </>
   )
 }
 
-export default homepage
+export default Loginpage
