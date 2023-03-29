@@ -3,9 +3,10 @@ const app = express();
 
 const cors = require("cors")
 const path = require('path');
-const { connection } = require("./config/db");
-const { appointmentRoute } = require('./routes/appointment.route');
-const { UserRouter } = require("./routes/user.route");
+const { connection } = require("./config/db.js");
+const { appointmentRoute } = require('./routes/appointment.route.js');
+const { UserRouter } = require("./routes/user.route.js");
+const { doctorRoute } = require("./routes/doctor.route.js");
 require('dotenv').config();
 
 
@@ -15,7 +16,7 @@ app.use("/user", UserRouter);
 
 
 app.use("/appointments", appointmentRoute);
-
+app.use("/doctors", doctorRoute)
 
 app.get("/home", (req, res) => {
   res.send("Api Working fine");
