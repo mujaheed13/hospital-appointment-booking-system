@@ -4,7 +4,9 @@ import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick';
-
+// import assets from "../"
+import poster1 from "../assets/poster1.jpg"
+import poster3 from "../assets/poster3.jpg"
 // Settings for the slider
 const settings = {
     dots: true,
@@ -31,15 +33,15 @@ export default function Carousel() {
 
     // These are the images used in the slide
     const cards = [
-        'https://img.freepik.com/premium-vector/health-hospital-doctor-covid19-instagram-carousel-template_500947-283.jpg?w=1380',
-        'https://www.shutterstock.com/shutterstock/photos/1873888222/display_1500/stock-photo-smiling-multiethnic-doctors-with-nurses-using-devices-in-hospital-banner-1873888222.jpg',
         'https://www.asterhospitals.in/sites/default/files/2021-01/about-us-new.jpg',
+        `${poster1}`,
+        `${poster3}`,
     ];
 
     return (
         <Box
             position={'relative'}
-            height="350"
+            height="550"
             overflow={'hidden'}>
             {/* CSS files for react-slick */}
             <link
@@ -84,9 +86,8 @@ export default function Carousel() {
                 {cards?.map((url, index) => (
                     <Box
                         key={index}
-                        height="300"
+                        height="500"
                         position="relative"
-                        borderRadius={"30px"}
                         backgroundPosition="center"
                         backgroundRepeat="no-repeat"
                         backgroundSize="cover"
