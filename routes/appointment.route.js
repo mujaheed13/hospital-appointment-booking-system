@@ -3,7 +3,13 @@ const { AppointmentModel } = require("../models/appointment.model");
 const appointmentRoute = Router(); 
 
 appointmentRoute.get("/", async (req, res)=>{
+    const user_id = req.query.user_id;
     try {
+        if(user_id){
+            const appointments = await AppointmentModel.find({user_id});
+            res.send(appointments);
+            return;
+        }
         const appointments = await AppointmentModel.find();
         res.send(appointments);
     } catch (error) {
