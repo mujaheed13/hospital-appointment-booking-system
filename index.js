@@ -9,6 +9,10 @@ app.use(express.json())
 app.use(cors())
 
 
+app.get("/home", (req, res) => {
+    res.send("Api Working fine")
+})
+
 app.get("/", (req, res) => {
     app.use(express.static(path.join(__dirname, "client", "dist")))
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
