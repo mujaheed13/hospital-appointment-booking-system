@@ -21,7 +21,8 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
-  
+import Loginpage from '../pages/login/Loginpage';
+
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
   
@@ -73,7 +74,7 @@ import {
               fontSize={'sm'}
               fontWeight={400}
               variant={'link'}
-              href={'#'}>
+              href={"/login"}>
               Sign In
             </Button>
             <Button
