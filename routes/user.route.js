@@ -73,20 +73,20 @@ UserRouter.post("/login", async (req, res) => {
   }
 });
 
-// UserRouter.get("/logout", async (req, res) => {
-//   let token = req.cookies.token;
-//   try {
-//     if (token) {
-//       await client.lPush("blackList", token);
+UserRouter.get("/logout", async (req, res) => {
+  let token = req.cookies.token;
+  try {
+    if (token) {
+      await client.lPush("blackList", token);
 
-//       res.send({ message: "Logout Sucesfull" });
-//     } else {
-//       res.send({ message: "Login Again" });
-//     }
-//   } catch (error) {
-//     console.log({ message: error.message });
-//     res.send({ message: error.message });
-//   }
-// });
+      res.send({ message: "Logout Sucesfull" });
+    } else {
+      res.send({ message: "Login Again" });
+    }
+  } catch (error) {
+    console.log({ message: error.message });
+    res.send({ message: error.message });
+  }
+});
 
 module.exports = { UserRouter };
