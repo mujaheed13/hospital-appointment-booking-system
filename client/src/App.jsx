@@ -6,16 +6,14 @@ import Carousel from './components/carousel'
 import Footer from './components/Footer'
 import Midsection from './components/Midsection'
 import Navbar from './components/Navbar'
+import AllRoute from './routes/Route'
 
 function App() {
   
   return (
-    <div>
-    <Navbar/>
-    <Carousel/>
-    <Midsection/>
-    <Footer/>
-    </div>
+   <>
+   <AllRoute />
+   </>
   )
 }
 
