@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-    Box,
-    IconButton,
-    useBreakpointValue,
-    Stack,
-    Heading,
-    Text,
-    Container,
-} from '@chakra-ui/react';
-
+import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Carousel Lib
@@ -27,47 +18,28 @@ const settings = {
     slidesToScroll: 1,
 };
 
-export default function CaptionCarousel() {
+export default function Carousel() {
     // As we have used custom buttons, we need a reference variable to
     // change the state
-    const [slider, setSlider] = React.useState < Slider | null > (null);
+    const [slider, setSlider] = React.useState(0);
 
     // These are the breakpoints which changes the position of the
     // buttons as the screen size changes
     const top = useBreakpointValue({ base: '90%', md: '50%' });
-    const side = useBreakpointValue({ base: '30%', md: '40px' });
+    const side = useBreakpointValue({ base: '30%', md: '10px' });
 
-    // This list contains all the data for carousels
-    // This can be static or loaded from a server
+
+    // These are the images used in the slide
     const cards = [
-        {
-            title: 'Design Projects 1',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        },
-        {
-            title: 'Design Projects 2',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
-        },
-        {
-            title: 'Design Projects 3',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        },
+        'https://img.freepik.com/premium-vector/health-hospital-doctor-covid19-instagram-carousel-template_500947-283.jpg?w=1380',
+        'https://www.shutterstock.com/shutterstock/photos/1873888222/display_1500/stock-photo-smiling-multiethnic-doctors-with-nurses-using-devices-in-hospital-banner-1873888222.jpg',
+        'https://www.asterhospitals.in/sites/default/files/2021-01/about-us-new.jpg',
     ];
 
     return (
         <Box
             position={'relative'}
-            height={'600px'}
-            width={'full'}
+            height="350"
             overflow={'hidden'}>
             {/* CSS files for react-slick */}
             <link
@@ -84,56 +56,42 @@ export default function CaptionCarousel() {
             {/* Left Icon */}
             <IconButton
                 aria-label="left-arrow"
-                variant="ghost"
+                colorScheme="messenger"
+                borderRadius="full"
                 position="absolute"
                 left={side}
                 top={top}
-                transform={'translate(0%, -50%)'}
+                transform={'translate(0%, -100%)'}
                 zIndex={2}
                 onClick={() => slider?.slickPrev()}>
-                <BiLeftArrowAlt size="40px" />
+                <BiLeftArrowAlt />
             </IconButton>
             {/* Right Icon */}
             <IconButton
                 aria-label="right-arrow"
-                variant="ghost"
+                colorScheme="messenger"
+                borderRadius="full"
                 position="absolute"
                 right={side}
                 top={top}
-                transform={'translate(0%, -50%)'}
+                transform={'translate(0%, -100%)'}
                 zIndex={2}
                 onClick={() => slider?.slickNext()}>
-                <BiRightArrowAlt size="40px" />
+                <BiRightArrowAlt />
             </IconButton>
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((card, index) => (
+                {cards?.map((url, index) => (
                     <Box
                         key={index}
-                        height={'6xl'}
+                        height="300"
                         position="relative"
+                        borderRadius={"30px"}
                         backgroundPosition="center"
                         backgroundRepeat="no-repeat"
                         backgroundSize="cover"
-                        backgroundImage={`url(${card.image})`}>
-                        {/* This is the block you need to change, to customize the caption */}
-                        <Container size="container.lg" height="600px" position="relative">
-                            <Stack
-                                spacing={6}
-                                w={'full'}
-                                maxW={'lg'}
-                                position="absolute"
-                                top="50%"
-                                transform="translate(0, -50%)">
-                                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                                    {card.title}
-                                </Heading>
-                                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                                    {card.text}
-                                </Text>
-                            </Stack>
-                        </Container>
-                    </Box>
+                        backgroundImage={`url(${url})`}
+                    />
                 ))}
             </Slider>
         </Box>
