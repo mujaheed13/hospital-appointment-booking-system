@@ -1,18 +1,26 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
-const path = require("path");
+
+const cors = require("cors")
+const path = require('path');
 const { connection } = require("./config/db");
-require("dotenv").config();
+const { appointmentRoute } = require('./routes/appointment.route');
 const { UserRouter } = require("./routes/user.route");
+require('dotenv').config();
+
 
 app.use(express.json());
 app.use(cors());
 app.use("/user", UserRouter);
 
+
+app.use("/appointments", appointmentRoute);
+
+
 app.get("/home", (req, res) => {
   res.send("Api Working fine");
 });
+
 
 app.get("/", (req, res) => {
   app.use(express.static(path.join(__dirname, "client", "dist")));
