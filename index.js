@@ -3,10 +3,13 @@ const app = express();
 const cors = require("cors")
 const path = require('path');
 const connection = require('./config/db');
+const { appointmentRoute } = require('./routes/appointment.route');
 require('dotenv').config();
 
 app.use(express.json())
 app.use(cors())
+
+app.use("/appointments", appointmentRoute);
 
 
 app.get("/", (req, res) => {
