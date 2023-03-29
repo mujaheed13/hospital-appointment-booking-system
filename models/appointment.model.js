@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const appSchema = mongoose.Schema({
+const appSchema = new mongoose.Schema({
     user_id: {
         type: String,
         required: true
