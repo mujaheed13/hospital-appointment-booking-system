@@ -8,7 +8,7 @@ const is_slot_available = async (req, res, next) => {
 
   const data = await DoctorModel.findOne({ name: doctor });
 
-  data?.slots?.forEach( async (el, i) => {
+  data?.slots?.forEach( async (el) => {
     if (el.day == day && el.is_booked == false) {
       await DoctorModel.updateOne({_id: data._id, slots: {$elemMatch: {day: day}}}, {$set:{"slots.$.is_booked": true}})
 

@@ -2,11 +2,30 @@ const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema(
   {
-    email: String,
-    name: String,
-    password: String,
-    mob_no: String,
-    dob: String,
+    email: {
+      type: String,
+      required: true
+    },
+    name:  {
+      type: String,
+      required: true
+    },
+    password:  {
+      type: String,
+      required: true
+    },
+    mob_no:  {
+      type: String,
+      required: true
+    },
+    dob:  {
+      type: String,
+      required: true
+    },
+    role: {
+      type: String,
+      default: "patient"
+    }
   },
   {
     versionKey: false,

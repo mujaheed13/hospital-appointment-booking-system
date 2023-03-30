@@ -7,16 +7,18 @@ const { connection } = require("./config/db.js");
 const { appointmentRoute } = require('./routes/appointment.route.js');
 const { UserRouter } = require("./routes/user.route.js");
 const { doctorRoute } = require("./routes/doctor.route.js");
+const { authentication } = require("./middleware/authentication.js");
 require('dotenv').config();
 
-
+//Middlewares
 app.use(express.json());
 app.use(cors());
+app.use("/appointments", authentication);
+
+//Routes
 app.use("/user", UserRouter);
-
-
 app.use("/appointments", appointmentRoute);
-app.use("/doctors", doctorRoute)
+app.use("/doctors", doctorRoute);
 
 app.get("/home", (req, res) => {
   res.send("Api Working fine");
