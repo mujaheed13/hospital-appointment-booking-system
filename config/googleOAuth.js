@@ -23,10 +23,7 @@ passport.use(
       return cb(null, user);
 
       //   console.log(profile);
-      }
-    
-    
-    
+    }
   )
 );
 
