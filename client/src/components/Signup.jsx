@@ -1,99 +1,56 @@
-import {
-    Flex,
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    InputGroup,
-    HStack,
-    InputRightElement,
-    Stack,
-    Button,
-    Heading,
-    Text,
-    useColorModeValue,
-    Link,
-  } from '@chakra-ui/react';
-  import { useState } from 'react';
-  import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-  
-  export default function Signup() {
-    const [showPassword, setShowPassword] = useState(false);
-  
-    return (
-      <Flex
-        minH={'100vh'}
-        align={'center'}
-        justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'}>
-              Sign up
-            </Heading>
-            <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool features ✌️
-            </Text>
-          </Stack>
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}>
-            <Stack spacing={4}>
-              <HStack>
-                <Box>
-                  <FormControl id="firstName" isRequired>
-                    <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
-                  </FormControl>
-                </Box>
-              </HStack>
-              <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
-                <Input type="email" />
-              </FormControl>
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
-                  <InputRightElement h={'full'}>
-                    <Button
-                      variant={'ghost'}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }>
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
-              <Stack spacing={10} pt={2}>
-                <Button
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}>
-                  Sign up
-                </Button>
-              </Stack>
-              <Stack pt={6}>
-                <Text align={'center'}>
-                  Already a user? <Link color={'blue.400'}>Login</Link>
-                </Text>
-              </Stack>
-            </Stack>
-          </Box>
-        </Stack>
-      </Flex>
-    );
-  }
+import React from "react";
+import './signup.css'
+
+function Signup(){
+    function myFunction(){
+        var x = document.getElementById("signup_password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+    }
+    function handlesignup(){
+      let name = document.getElementById("signup_name").value;
+      let email = document.getElementById("signup_email").value;
+      let password = document.getElementById("signup_password").value;
+      if(email===""||password===""){
+       alert("please fill all the credentials")
+      }else{
+      let obj = {name,email,password};
+      console.log(obj);
+      }
+    }
+    return(<>
+    <div id="signup_container">
+                    <div id="signup_form">
+                    <h1>Sign Up</h1>
+                    <label for="">User Name</label><br/>
+                    <input id="signup_name" type="text" placeholder="Enter Your Name"/><br/><br/>
+                    <label for="">Email</label><br/>
+                    <input id="signup_email" type="text" placeholder="Enter Your Email"/><br/><br/>
+                    <label for="">Password</label><br/>
+                    <input id="signup_password" type="password" placeholder="Enter Your Password"/><br/>
+                    <div id="fp">
+                    <p><input type="checkbox" onClick={myFunction}/>Show Password</p>
+                    <p>Forget Password?</p>
+                    </div>
+                    <button id="signup_btn" onClick={handlesignup}>Sign Up</button>
+                    <div id="continue_div">
+                    <p>or</p>
+                    <h3>Continue With</h3>
+                    <div id="auth"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt=""/>
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt=""/>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" alt=""/>
+                    </div>
+                    </div>
+                    </div>
+                   <div id="signup_img">
+                   <img src="https://img.freepik.com/free-vector/doctor-measuring-blood-pressure-male-patient-female-physician-sitting-table-clinic-hospital-checking-arterial-pressure-sick-man-flat-vector-illustration-cardiology-health-concept_74855-24496.jpg?w=2000" alt=""/>
+                  <h1>Sign Up</h1>
+                  </div>
+                </div>
+    </>)
+}
+
+export default Signup;
