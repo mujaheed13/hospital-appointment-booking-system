@@ -36,19 +36,19 @@ export default function Midsection() {
         <GridItem colSpan={1}>
           <VStack alignItems="flex-start" spacing="20px">
             <chakra.h2 fontSize="3xl" fontWeight="700">
-              Medium length title
+              Better Life Through Better Hospitality
             </chakra.h2>
             <Button colorScheme="green" size="md">
-              Call To Action
+              Book Appointment
             </Button>
           </VStack>
         </GridItem>
         <GridItem>
           <Flex>
             <chakra.p>
-              Provide your customers a story they would enjoy keeping in mind
-              the objectives of your website. Pay special attention to the tone
-              of voice.
+              Join us to a fun, friendly and healthy environment. Our
+              professionals are working so hard to see smile on your face that
+              you deserve! We are dedicated about our duties.
             </chakra.p>
           </Flex>
         </GridItem>
@@ -63,20 +63,22 @@ export default function Midsection() {
         gap={{ base: "8", sm: "12", md: "16" }}
       >
         <Feature
-          heading={"First Feature"}
-          text={"Short text describing one of you features/service"}
+          heading={"Easy Appointment"}
+          text={
+            "Avoid endless back and forth communication. Confirmed Doctor Appointment, schedule next consultation with token."
+          }
         />
         <Feature
-          heading={"Second Feature"}
-          text={"Short text describing one of you features/service"}
+          heading={"Emergency Service"}
+          text={"All that a member needs to do in case of a Medical Emergency, is place a call on our Emergency Helpline."}
         />
         <Feature
-          heading={"Third Feature"}
-          text={"Short text describing one of you features/service"}
+          heading={"24/7 Service"}
+          text={"LifeCare hospital offers unique 24x7 Medical Emergency Response cover to all its members."}
         />
         <Feature
-          heading={"Fourth Feature"}
-          text={"Short text describing one of you features/service"}
+          heading={"Free COVID Checkups"}
+          text={"​LifeCare Hospital offers Free Covid-19 Test. Under the Ayush Bharat Yojna."}
         />
       </Grid>
     </Box>
