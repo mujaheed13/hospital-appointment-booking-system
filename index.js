@@ -21,10 +21,10 @@ app.use("/user", UserRouter);
 app.use("/appointments", appointmentRoute);
 app.use("/doctors", doctorRoute);
 
+
 app.get("/home", (req, res) => {
   res.send("Api Working fine");
 });
-
 
 app.get("/", (req, res) => {
   app.use(express.static(path.join(__dirname, "client", "dist")));
@@ -34,14 +34,14 @@ app.get("/", (req, res) => {
 
 
 
-
-app.listen(process.env.port, async () => {
+app.listen(process.env.port || 1337, async () => {
   try {
-      await connection;
-      console.log("Connected To DB");
+    await connection;
+    console.log("Connected To DB");
   } catch (error) {
     console.log(
-      "Something went wrong while connecting to the Mongo DataBase " + error.message
+      "Something went wrong while connecting to the Mongo DataBase " +
+        error.message
     );
   }
   console.log(`listening on port ${process.env.port}`);

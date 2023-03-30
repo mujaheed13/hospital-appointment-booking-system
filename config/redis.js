@@ -2,8 +2,6 @@ const redis = require("redis");
 
 // import { createClient } from "redis";
 
-
-
 const client = redis.createClient({
   password: "8AzJxAN5NXRzpGAZRl6udHWZk5SgRsK5",
   socket: {
@@ -11,7 +9,6 @@ const client = redis.createClient({
     port: 16430,
   },
 });
-
 
 client.connect();
 
@@ -23,5 +20,5 @@ client.on("connect", () => {
 });
 
 module.exports = {
-  client
+  client,
 };

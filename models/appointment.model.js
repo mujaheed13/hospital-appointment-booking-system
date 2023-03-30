@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const appSchema = new mongoose.Schema(
   {
     user_id: {
@@ -18,6 +19,7 @@ const appSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
+
 
 const AppointmentModel = mongoose.model("appointment", appSchema);
 

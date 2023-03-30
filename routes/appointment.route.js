@@ -1,16 +1,44 @@
 const { Router } = require("express");
+
 const { is_slot_available } = require("../middleware/available-slot.js");
 const { AppointmentModel } = require("../models/appointment.model.js");
 const appointmentRoute = Router();
+const passport = require("../config/googleOAuth");
+
+// ---------------------------------Google-OAuth--------------------------------------------
+
+// For using Google auth use port 8080 only coz it is listed there and make sure to add this into your env
+
+// GOOGLE_CLIENT_ID = 115721161805-1bog8jokqdchurrptbtuchno0fq0ubv5.apps.googleusercontent.com
+
+// GOOGLE_CLIENT_SECRET = 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
+
+appointmentRoute.get(
+  "/google/auth",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+appointmentRoute.get(
+  "/google/auth/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    session: false,
+  }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    // console.log(req.user);
+    res.redirect("/");
+  }
+);
+
+// appointmentRoute.get("/google/auth", (req, res) => {
+//   res.send("OAuth Done Succsfully Redirecting To Dashboard");
+// });
+
+// ---------------------------------------------------------------------------------------
 
 appointmentRoute.get("/", async (req, res) => {
-  const user_id = req.query.user_id;
   try {
-    if (user_id) {
-      const appointments = await AppointmentModel.find({ user_id });
-      res.send(appointments);
-      return;
-    }
     const appointments = await AppointmentModel.find();
     res.send(appointments);
   } catch (error) {
@@ -18,6 +46,7 @@ appointmentRoute.get("/", async (req, res) => {
     res.status(500).send({ error_msg: error });
   }
 });
+
 
 appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
   try {
@@ -40,6 +69,6 @@ appointmentRoute.delete("/:id", async (req, res) => {
         console.log(error);
         res.status(500).send({ error_msg: error });
     }
-});
+
 
 module.exports = { appointmentRoute };

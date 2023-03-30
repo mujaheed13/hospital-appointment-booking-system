@@ -1,0 +1,16 @@
+
+/* 
+@media screen and (min-width:480px) and (max-width:770px){
+    .doctorcard{
+        grid-template-row: repeat(1,1fr);
+        background-color: red;
+        gap:50px
+    }
+} */
+@media screen and (min-width:0px) and (max-width:770px){
+    .doctorcard{
+       
+        flex-direction: column;
+        gap: 20px;
+    }
+}

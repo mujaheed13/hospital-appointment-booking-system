@@ -19,7 +19,7 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
 };
-
+import "./carousel.css"
 export default function Carousel() {
     // As we have used custom buttons, we need a reference variable to
     // change the state
@@ -39,7 +39,7 @@ export default function Carousel() {
     ];
 
     return (
-        <Box
+        <Box className="carous"
             position={'relative'}
             height="550"
             overflow={'hidden'}>
@@ -55,36 +55,10 @@ export default function Carousel() {
                 type="text/css"
                 href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
             />
-            {/* Left Icon */}
-            <IconButton
-                aria-label="left-arrow"
-                colorScheme="messenger"
-                borderRadius="full"
-                position="absolute"
-                left={side}
-                top={top}
-                transform={'translate(0%, -100%)'}
-                zIndex={2}
-                onClick={() => slider?.slickPrev()}>
-                <BiLeftArrowAlt />
-            </IconButton>
-            {/* Right Icon */}
-            <IconButton
-                aria-label="right-arrow"
-                colorScheme="messenger"
-                borderRadius="full"
-                position="absolute"
-                right={side}
-                top={top}
-                transform={'translate(0%, -100%)'}
-                zIndex={2}
-                onClick={() => slider?.slickNext()}>
-                <BiRightArrowAlt />
-            </IconButton>
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {cards?.map((url, index) => (
-                    <Box
+                    <Box className="carous"
                         key={index}
                         height="500"
                         position="relative"
