@@ -4,17 +4,27 @@ const appointmentRoute = Router();
 const passport = require("../config/googleOAuth");
 
 // ---------------------------------Google-OAuth--------------------------------------------
+
+// For using Google auth use port 8080 only coz it is listed there and make sure to add this into your env
+
+// GOOGLE_CLIENT_ID = 115721161805-1bog8jokqdchurrptbtuchno0fq0ubv5.apps.googleusercontent.com
+
+// GOOGLE_CLIENT_SECRET = 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
+
 appointmentRoute.get(
   "/google/auth",
-  passport.authenticate("google", { scope: ["profile","email"] })
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 appointmentRoute.get(
   "/google/auth/callback",
-  passport.authenticate("google", { failureRedirect: "/login" , session:false}),
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    session: false,
+  }),
   function (req, res) {
     // Successful authentication, redirect home.
-    console.log(req.user);
+    // console.log(req.user);
     res.redirect("/");
   }
 );
