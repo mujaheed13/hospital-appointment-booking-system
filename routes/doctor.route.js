@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const { DoctorModel } = require("../models/doctor.model.js");
 const doctorRoute = Router();
-const slots = require("../utils/slots.js");
+const { slots } = require("../utils/slots.js");
 
 doctorRoute.post("/add", async (req, res) => {
   try {
-    const doctor = DoctorModel({ ...req.body, slots });
+    const doctor = DoctorModel({ ...req.body, slots: slots });
     await doctor.save();
     res.send({ msg: "Doctor added" });
   } catch (error) {
