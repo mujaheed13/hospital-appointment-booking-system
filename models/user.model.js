@@ -25,7 +25,7 @@ const UserSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      default: "patient"
+      required: true
     }
   },
   {

@@ -14,7 +14,7 @@ UserRouter.get("/", (req, res) => {
 });
 
 UserRouter.post("/register", async (req, res) => {
-  const { email, name, password, mob_no, dob } = req.body;
+  const { email, name, password, mob_no, dob, role } = req.body;
 
   try {
     bcrypt.hash(password, +process.env.sRound, async (err, hash) => {
@@ -28,6 +28,7 @@ UserRouter.post("/register", async (req, res) => {
           password: hash,
           mob_no,
           dob,
+          role: role || "patient"
         });
         await User.save();
         res.send({ message: `Register Sucessfull` });
@@ -50,7 +51,7 @@ UserRouter.post("/login", async (req, res) => {
         if (result) {
           console.log(User._id);
           const token = jwt.sign(
-            { userID: User._id, userName: User.name },
+            { userID: User._id, userName: User.name, role: User.role },
             process.env.key
           ); //{expiresIn:60}
           await client.SET(User.email, token);

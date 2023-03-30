@@ -14,6 +14,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());
 app.use("/appointments", authentication);
+app.use("/doctors", authentication);
 
 //Routes
 app.use("/user", UserRouter);
