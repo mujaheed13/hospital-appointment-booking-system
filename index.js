@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(process.env.port, async () => {
+app.listen(process.env.port || 1337, async () => {
     try {
         await connection;
     } catch (error) {
