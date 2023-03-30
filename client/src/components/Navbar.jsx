@@ -21,15 +21,13 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import Loginpage from '../pages/login/Loginpage';
 import logo from "../assets/logo.png";
 import { Link as ReachLink } from "react-router-dom"
-
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-
+ 
   return (
-    <Box>
+    <Box className='navstick'>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
@@ -54,11 +52,6 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} align={"center"}>
-          {/* <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily={'heading'}
-              color={useColorModeValue('gray.800', 'white')}>
-            </Text> */}
           <Link as={ReachLink} to='/'>
             <img width={'70px'} src={logo} alt="logo" />
           </Link>
@@ -119,8 +112,9 @@ const DesktopNav = () => {
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
+              as={ReachLink}
                 p={2}
-                href={navItem.href ?? '#'}
+                to={navItem.to ?? '#'}
                 fontSize={'sm'}
                 fontWeight={500}
                 color={linkColor}
@@ -154,25 +148,31 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ label, to, subLabel }) => {
+ 
   return (
-    <Link
-      href={href}
+    <Link 
+      as={ReachLink}
+      to={to}
       role={'group'}
       display={'block'}
       p={2}
       rounded={'md'}
       _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
+      <Link as={ReachLink} to="/about">
+        <Box >
+          
+          <Text 
             transition={'all .3s ease'}
             _groupHover={{ color: 'pink.400' }}
             fontWeight={500}>
             {label}
           </Text>
+         
           <Text fontSize={'sm'}>{subLabel}</Text>
         </Box>
+        </Link>
         <Flex
           transition={'all .3s ease'}
           transform={'translateX(-10px)'}
@@ -201,7 +201,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -209,7 +209,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        to={to}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -241,7 +241,7 @@ const MobileNavItem = ({ label, children, href }) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} as={ReachLink} py={2} to={child.to}>
                 {child.label}
               </Link>
             ))}
@@ -254,41 +254,43 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: 'Inspiration',
+    label: 'Doctor',
+    to: '/doctor',
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
+        label: 'Our Staff',
+        subLabel: 'Meet Our Expert Team',
+  to: '/doctor',
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        label: 'Department',
+        subLabel: '',
+  to: '/doctor',
       },
     ],
   },
   {
-    label: 'Find Work',
+    label: 'Appointment',
+    to: '/appointment',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
+        label: 'Book Appointment',
+        subLabel: 'Book your Appointment ',
+        to: '/appointment',
       },
       {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
+        label: 'Appointment Status',
+        subLabel: 'Check your Appointment Status',
+        to: '/appointment',
       },
     ],
   },
   {
-    label: 'Learn Design',
-    href: '#',
+    label: 'About',
+    to: '/about',
   },
   {
-    label: 'Hire Designers',
-    href: '#',
+    label: 'Services',
+    to: '/service',
   },
 ];

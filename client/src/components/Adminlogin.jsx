@@ -21,12 +21,12 @@ export default function AdminLogin() {
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
+        {/* <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Sign in to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+            to Book an <Link color={'blue.400'}>Appointment</Link> ✌️
           </Text>
-        </Stack>
+        </Stack> */}
         <Box
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
