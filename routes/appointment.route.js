@@ -1,26 +1,59 @@
 const { Router } = require("express");
 const { AppointmentModel } = require("../models/appointment.model");
-const appointmentRoute = Router(); 
+const appointmentRoute = Router();
+const passport = require("../config/googleOAuth");
 
-appointmentRoute.get("/", async (req, res)=>{
-    try {
-        const appointments = await AppointmentModel.find();
-        res.send(appointments);
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({error_msg: error});
-    }
-})
+// ---------------------------------Google-OAuth--------------------------------------------
+
+// For using Google auth use port 8080 only coz it is listed there and make sure to add this into your env
+
+// GOOGLE_CLIENT_ID = 115721161805-1bog8jokqdchurrptbtuchno0fq0ubv5.apps.googleusercontent.com
+
+// GOOGLE_CLIENT_SECRET = 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
+
+appointmentRoute.get(
+  "/google/auth",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+appointmentRoute.get(
+  "/google/auth/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/login",
+    session: false,
+  }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    // console.log(req.user);
+    res.redirect("/");
+  }
+);
+
+// appointmentRoute.get("/google/auth", (req, res) => {
+//   res.send("OAuth Done Succsfully Redirecting To Dashboard");
+// });
+
+// ---------------------------------------------------------------------------------------
+
+appointmentRoute.get("/", async (req, res) => {
+  try {
+    const appointments = await AppointmentModel.find();
+    res.send(appointments);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
+  }
+});
 
 appointmentRoute.post("/book", async (req, res) => {
-    try {
-        const appointment = AppointmentModel(req.body);
-        await appointment.save();
-        res.send({msg: "Appointment Booked"});
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({error_msg: error});
-    }
-})
+  try {
+    const appointment = AppointmentModel(req.body);
+    await appointment.save();
+    res.send({ msg: "Appointment Booked" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
+  }
+});
 
-module.exports = { appointmentRoute }
+module.exports = { appointmentRoute };
