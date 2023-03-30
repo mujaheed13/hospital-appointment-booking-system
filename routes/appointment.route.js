@@ -1,5 +1,7 @@
 const { Router } = require("express");
-const { AppointmentModel } = require("../models/appointment.model");
+
+const { is_slot_available } = require("../middleware/available-slot.js");
+const { AppointmentModel } = require("../models/appointment.model.js");
 const appointmentRoute = Router();
 const passport = require("../config/googleOAuth");
 
@@ -45,15 +47,28 @@ appointmentRoute.get("/", async (req, res) => {
   }
 });
 
-appointmentRoute.post("/book", async (req, res) => {
+
+appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
   try {
     const appointment = AppointmentModel(req.body);
     await appointment.save();
     res.send({ msg: "Appointment Booked" });
+    return;
   } catch (error) {
     console.log(error);
     res.status(500).send({ error_msg: error });
   }
 });
+
+appointmentRoute.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        await AppointmentModel.deleteOne({_id: id});
+        res.send({msg: "Appointment Deleted"});
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ error_msg: error });
+    }
+
 
 module.exports = { appointmentRoute };

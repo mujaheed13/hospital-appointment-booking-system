@@ -14,7 +14,7 @@ UserRouter.get("/", (req, res) => {
 });
 
 UserRouter.post("/register", async (req, res) => {
-  const { email, name, password, mob_no, dob } = req.body;
+  const { email, name, password, mob_no, dob, role } = req.body;
 
   try {
     bcrypt.hash(password, +process.env.sRound, async (err, hash) => {
@@ -28,6 +28,7 @@ UserRouter.post("/register", async (req, res) => {
           password: hash,
           mob_no,
           dob,
+          role: role || "patient"
         });
         await User.save();
         res.send({ message: `Register Sucessfull` });
@@ -50,7 +51,7 @@ UserRouter.post("/login", async (req, res) => {
         if (result) {
           console.log(User._id);
           const token = jwt.sign(
-            { userID: User._id, userName: User.name },
+            { userID: User._id, userName: User.name, role: User.role },
             process.env.key
           ); //{expiresIn:60}
           await client.SET(User.email, token);
@@ -59,13 +60,14 @@ UserRouter.post("/login", async (req, res) => {
             message: "Login Sucessfull",
             email: User.email,
             username: User.name,
+            token
           });
         } else {
-          res.send({ message: "Login Again" });
+          res.status(401).send({ message: "Wrong Credentials" });
         }
       });
     } else {
-      res.send({ message: "Login Again" });
+      res.status(404).send({ message: "User does not exists" });
     }
   } catch (error) {
     // logger.log(`error`, `error :-${error.message}`);
