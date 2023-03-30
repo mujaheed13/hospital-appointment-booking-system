@@ -5,8 +5,11 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 // import assets from "../"
-import poster1 from "../assets/poster1.jpg";
-import poster3 from "../assets/poster3.jpg";
+
+import poster1 from "../assets/poster1.jpg"
+import poster2 from "../assets/poster2.jpg"
+import poster3 from "../assets/poster3.jpg"
+
 // Settings for the slider
 const settings = {
   dots: true,
@@ -36,6 +39,75 @@ export default function Carousel() {
     `${poster1}`,
     `${poster3}`,
   ];
+
+
+    // These are the images used in the slide
+    const cards = [
+        'https://www.asterhospitals.in/sites/default/files/2021-01/about-us-new.jpg',
+        `${poster1}`,
+        `${poster2}`,
+        `${poster3}`,
+    ];
+
+    return (
+        <Box
+            position={'relative'}
+            height="550"
+            overflow={'hidden'}>
+            {/* CSS files for react-slick */}
+            <link
+                rel="stylesheet"
+                type="text/css"
+                charSet="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+            />
+            <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+            />
+            {/* Left Icon */}
+            <IconButton
+                aria-label="left-arrow"
+                colorScheme="messenger"
+                borderRadius="full"
+                position="absolute"
+                left={side}
+                top={top}
+                transform={'translate(0%, -100%)'}
+                zIndex={2}
+                onClick={() => slider?.slickPrev()}>
+                <BiLeftArrowAlt />
+            </IconButton>
+            {/* Right Icon */}
+            <IconButton
+                aria-label="right-arrow"
+                colorScheme="messenger"
+                borderRadius="full"
+                position="absolute"
+                right={side}
+                top={top}
+                transform={'translate(0%, -100%)'}
+                zIndex={2}
+                onClick={() => slider?.slickNext()}>
+                <BiRightArrowAlt />
+            </IconButton>
+            {/* Slider */}
+            <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                {cards?.map((url, index) => (
+                    <Box
+                        key={index}
+                        height="500"
+                        position="relative"
+                        backgroundPosition="center"
+                        backgroundRepeat="no-repeat"
+                        backgroundSize="cover"
+                        backgroundImage={`url(${url})`}
+                    />
+                ))}
+            </Slider>
+        </Box>
+    );
 
   return (
     <Box position={"relative"} height="550" overflow={"hidden"}>
@@ -95,4 +167,5 @@ export default function Carousel() {
       </Slider>
     </Box>
   );
+
 }
