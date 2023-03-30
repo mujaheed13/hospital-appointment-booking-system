@@ -11,7 +11,7 @@ import {
   Heading,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export default function AdminLogin() {
   return (
@@ -28,10 +28,11 @@ export default function AdminLogin() {
           </Text>
         </Stack> */}
         <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
+          rounded={"lg"}
+          bg={useColorModeValue("white", "gray.700")}
+          boxShadow={"lg"}
+          p={8}
+        >
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
@@ -43,18 +44,20 @@ export default function AdminLogin() {
             </FormControl>
             <Stack spacing={10}>
               <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
+                direction={{ base: "column", sm: "row" }}
+                align={"start"}
+                justify={"space-between"}
+              >
                 <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
+                <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
               <Button
-                bg={'blue.400'}
-                color={'white'}
+                bg={"blue.400"}
+                color={"white"}
                 _hover={{
-                  bg: 'blue.500',
-                }}>
+                  bg: "blue.500",
+                }}
+              >
                 Sign in
               </Button>
             </Stack>

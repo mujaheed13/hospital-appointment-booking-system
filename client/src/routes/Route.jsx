@@ -24,7 +24,7 @@ const AllRoute = () => {
         <Route path="/admin/dashboard" element={<Adminpage/>}/>
         <Route path="*" element={<NotFound/>}/>
     </Routes>
-  )
-}
+  );
+};
 
-export default AllRoute
+export default AllRoute;

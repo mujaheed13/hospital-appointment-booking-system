@@ -20,7 +20,7 @@ const homepage = () => {
     <Contact/>
     <Footer/>
     </>
-  )
-}
+  );
+};
 
-export default homepage
+export default homepage;
