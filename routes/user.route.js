@@ -59,13 +59,14 @@ UserRouter.post("/login", async (req, res) => {
             message: "Login Sucessfull",
             email: User.email,
             username: User.name,
+            token
           });
         } else {
-          res.send({ message: "Login Again" });
+          res.status(401).send({ message: "Wrong Credentials" });
         }
       });
     } else {
-      res.send({ message: "Login Again" });
+      res.status(404).send({ message: "User does not exists" });
     }
   } catch (error) {
     // logger.log(`error`, `error :-${error.message}`);
