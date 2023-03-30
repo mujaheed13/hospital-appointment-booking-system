@@ -69,6 +69,6 @@ appointmentRoute.delete("/:id", async (req, res) => {
         console.log(error);
         res.status(500).send({ error_msg: error });
     }
-
+})
 
 module.exports = { appointmentRoute };
