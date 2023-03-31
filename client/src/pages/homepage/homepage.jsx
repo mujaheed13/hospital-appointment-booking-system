@@ -7,6 +7,7 @@ import Midsection from '../../components/Midsection'
 import Navbar from '../../components/Navbar'
 import Statistics from '../../components/statistics'
 import WithSpeechBubbles from '../../components/Testimonials'
+import AppointmentHead from '../../components/AppointmentHead'
 
 const homepage = () => {
   return (
@@ -14,6 +15,7 @@ const homepage = () => {
     <Navbar/>
     <Carousel />
     <Midsection/>
+    <AppointmentHead/>
     <DoctorCard/>
     <WithSpeechBubbles/>
     <Statistics/>

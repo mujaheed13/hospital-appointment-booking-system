@@ -12,6 +12,7 @@ import {
     chakra,
   } from '@chakra-ui/react';
   import "./doctor.css"
+  import { Link as ReachLink } from "react-router-dom"
   export default function DoctorCard() {
     return (
       <>
@@ -102,6 +103,8 @@ import {
               Message
             </Button>
             <Button
+            as={ReachLink}
+            to={"/appointment"}
               flex={1}
               fontSize={'sm'}
               rounded={'full'}
@@ -116,7 +119,7 @@ import {
               _focus={{
                 bg: 'blue.500',
               }}>
-              Follow
+              Book
             </Button>
           </Stack>
         </Box>
@@ -200,6 +203,8 @@ import {
               Message
             </Button>
             <Button
+            as={ReachLink}
+            to={"/appointment"}
               flex={1}
               fontSize={'sm'}
               rounded={'full'}
@@ -214,7 +219,7 @@ import {
               _focus={{
                 bg: 'blue.500',
               }}>
-              Follow
+              Book
             </Button>
           </Stack>
         </Box>
@@ -298,6 +303,8 @@ import {
               Message
             </Button>
             <Button
+            as={ReachLink}
+            to={"/appointment"}
               flex={1}
               fontSize={'sm'}
               rounded={'full'}
@@ -312,7 +319,7 @@ import {
               _focus={{
                 bg: 'blue.500',
               }}>
-              Follow
+              Book
             </Button>
           </Stack>
         </Box>
@@ -396,6 +403,8 @@ import {
               Message
             </Button>
             <Button
+            as={ReachLink}
+            to={"/appointment"}
               flex={1}
               fontSize={'sm'}
               rounded={'full'}
@@ -410,7 +419,7 @@ import {
               _focus={{
                 bg: 'blue.500',
               }}>
-              Follow
+              Book
             </Button>
           </Stack>
         </Box>
