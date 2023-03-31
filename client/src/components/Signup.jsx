@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-
+import {Link as ReachLink} from 'react-router-dom'
 const baseURL = "https://lifecare-mwbk.onrender.com"
 
 export default function Signup() {
