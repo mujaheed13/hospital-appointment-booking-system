@@ -17,8 +17,35 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
+const baseURL = "https://lifecare-mwbk.onrender.com"
+
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+
+  async function handleSignUp() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const first_name = document.getElementById('firstName').value;
+    const last_name = document.getElementById('lastName').value;
+    console.log(email, password, first_name, last_name);
+
+    const name = first_name + " " + last_name
+    const payload = {
+      name,
+      email,
+      password
+    }
+
+    const fData = await fetch(`${baseURL}/user/register`, {
+      method: "POST",
+      "Content-type": "application/json",
+      body: JSON.stringify(payload)
+    });
+
+    const data = await fData.json();
+    console.log(data);
+    
+  }
 
   return (
     <Flex
@@ -75,7 +102,7 @@ export default function Signup() {
               </InputGroup>
             </FormControl>
             <Stack spacing={10} pt={2}>
-              <Button
+              <Button onClick={handleSignUp}
                 loadingText="Submitting"
                 size="lg"
                 bg={'blue.400'}
