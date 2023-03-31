@@ -13,9 +13,34 @@ import {
   useColorModeValue,
   Center,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link as ReachLink } from "react-router-dom"
+const baseURL = "https://lifecare-mwbk.onrender.com"
 export default function Login() {
+
+  const [submitted, setSubmitted] = useState(false);
+  const [email,setEmail]=useState("")
+  const [pass,setPass]=useState("")
+
+
+  async function handleSignIn() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const payload = {email,password};
+    
+    let fData = await fetch(`${baseURL}/user/login`,{
+      method:"POST",
+      "Content-type":"application/json",
+      body: JSON.stringify(payload)
+    })
+
+    const data = await fData.json();
+    console.log(data);
+
+  }
+  
   return (
     <Flex
       minH={'100vh'}
@@ -37,11 +62,11 @@ export default function Login() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" required />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input type="password" required />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -51,7 +76,7 @@ export default function Login() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.400'}>Forgot password?</Link>
               </Stack>
-              <Button
+              <Button onClick={handleSignIn}
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
