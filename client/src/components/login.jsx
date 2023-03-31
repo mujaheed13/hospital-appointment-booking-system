@@ -11,9 +11,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  Center,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-
+import { FcGoogle } from 'react-icons/fc';
+import { Link as ReachLink } from "react-router-dom"
 const baseURL = "https://lifecare-mwbk.onrender.com"
 export default function Login() {
 
@@ -49,7 +51,7 @@ export default function Login() {
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Sign in to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to Book an <Link color={'blue.400'}>Appointment</Link> ✌️
+            to Book an <Link as={ReachLink} to={"/appointment"}color={'blue.400'}>Appointment</Link> ✌️
           </Text>
         </Stack>
         <Box
@@ -82,10 +84,19 @@ export default function Login() {
                 }}>
                 Sign in
               </Button>
+              <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
+          <Center>
+            <Text>Sign in with Google</Text>
+          </Center>
+        </Button>
             </Stack>
           </Stack>
         </Box>
       </Stack>
     </Flex>
+    
   );
 }
+
+
+

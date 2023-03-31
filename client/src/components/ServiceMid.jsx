@@ -12,7 +12,7 @@ import {
     createIcon,
     useColorModeValue,
 } from '@chakra-ui/react';
-
+import { Link as ReachLink } from "react-router-dom"
 export default function ServiceMid() {
     return (
         <Container maxW={'7xl'}>
@@ -54,6 +54,8 @@ export default function ServiceMid() {
                         spacing={{ base: 4, sm: 6 }}
                         direction={{ base: 'column', sm: 'row' }}>
                         <Button
+                        as={ReachLink}
+                        to={"/signup"}
                             rounded={'full'}
                             size={'lg'}
                             fontWeight={'normal'}
@@ -64,6 +66,8 @@ export default function ServiceMid() {
                             Get started
                         </Button>
                         <Button
+                        as={ReachLink}
+                        to={"/appointment"}
                             rounded={'full'}
                             size={'lg'}
                             fontWeight={'normal'}

@@ -10,7 +10,7 @@ import {
   Container,
 } from "@chakra-ui/react";
 import {} from "@chakra-ui/react";
-
+import { Link as ReachLink } from "react-router-dom"
 const Feature = ({ heading, text }) => {
   return (
     <GridItem>
@@ -38,7 +38,7 @@ export default function Midsection() {
             <chakra.h2 fontSize="3xl" fontWeight="700">
               Better Life Through Better Hospitality
             </chakra.h2>
-            <Button colorScheme="green" size="md">
+            <Button colorScheme="green" size="md" as={ReachLink} to={"/appointment"}>
               Book Appointment
             </Button>
           </VStack>

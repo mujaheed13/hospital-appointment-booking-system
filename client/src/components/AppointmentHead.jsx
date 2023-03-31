@@ -7,7 +7,7 @@ import {
     Button,
     Icon,
   } from '@chakra-ui/react';
-  
+  import { Link as ReachLink } from "react-router-dom"
   export default function AppointmentHead() {
     return (
       <Container maxW={'5xl'}>
@@ -20,26 +20,27 @@ import {
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            Meeting scheduling{' '}
+            Booking Appointment{' '}
             <Text as={'span'} color={'orange.400'}>
               made easy
             </Text>
           </Heading>
           <Text color={'gray.500'} maxW={'3xl'}>
-            Never miss a meeting. Never be late for one too. Keep track of your
-            meetings and receive smart reminders in appropriate times. Read your
-            smart “Daily Agenda” every morning.
+            Never miss a appointment. Never be late for one too. Keep track of your
+            appointments and receive smart reminders in appropriate times.
           </Text>
           <Stack spacing={6} direction={'row'}>
             <Button
+            as={ReachLink}
+            to={"/appointment"}
               rounded={'full'}
               px={6}
               colorScheme={'orange'}
               bg={'orange.400'}
               _hover={{ bg: 'orange.500' }}>
-              Get started
+              Book Yours
             </Button>
-            <Button rounded={'full'} px={6}>
+            <Button rounded={'full'} px={6} as={ReachLink} to={"/about"}>
               Learn more
             </Button>
           </Stack>
