@@ -1,0 +1,9 @@
+body{
+    position: relative;
+}
+
+.sidebar{
+    padding-top: 20vh;
+    position: fixed;
+    left: 0;
+}

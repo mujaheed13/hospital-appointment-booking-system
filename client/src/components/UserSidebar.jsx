@@ -1,9 +1,19 @@
 import { Box, Flex, Icon, Text } from "@chakra-ui/react";
 import { FiHome, FiUsers, FiSettings } from "react-icons/fi";
+import "./usersidebar.css"
+import { Link as ReachLink } from "react-router-dom"
+
+const baseURL = "https://lifecare-mwbk.onrender.com"
 
 const UserSidebar = () => {
+
+
+  function handleHome() {
+    window.location.href = `${baseURL}/`
+  }
+
   return (
-    <Box w="250px" h="100vh" bg="gray.800" color="white" px="4" py="6">
+    <Box w="250px" h="100vh" bg="gray.800" color="white" px="4" py="6" className="sidebar">
       <Flex alignItems="center" mb="6">
         <Icon as={FiHome} w="6" h="6" />
         <Text fontSize="2xl" ml="2">
@@ -11,16 +21,18 @@ const UserSidebar = () => {
         </Text>
       </Flex>
       <Box mb="6">
-        <Text fontWeight="bold" mb="2">
+        <Text fontWeight="bold" mb="2" >
           Main
         </Text>
-        <Flex alignItems="center" mb="2">
+        <Flex alignItems="center" mb="2" onClick={handleHome}>
           <Icon as={FiHome} />
-          <Text ml="2">Home</Text>
+          <Text ml="2" style={{cursor:"pointer"}}>
+            Home
+          </Text>
         </Flex>
         <Flex alignItems="center" mb="2">
           <Icon as={FiUsers} />
-          <Text ml="2">Users</Text>
+          <Text ml="2" style={{cursor:"pointer"}}>Users</Text>
         </Flex>
       </Box>
       <Box>
