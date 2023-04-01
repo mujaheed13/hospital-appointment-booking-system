@@ -5,7 +5,7 @@ const UserSchema = mongoose.Schema(
     email: {
       type: String,
       // required: true,
-      // unique: true,
+      unique: true
     },
     name: {
       type: String,
@@ -25,8 +25,8 @@ const UserSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      // required: true
-    },
+      required: true
+    }
   },
   {
     versionKey: false,
