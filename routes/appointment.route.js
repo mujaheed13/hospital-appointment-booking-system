@@ -48,6 +48,7 @@ appointmentRoute.get("/", authentication, async (req, res) => {
   }
 });
 
+
 appointmentRoute.post(
   "/:day/:doctor",
   authentication,
@@ -73,6 +74,20 @@ appointmentRoute.delete("/:id", authentication, async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ error_msg: error.message });
+  }
+});
+
+
+
+appointmentRoute.patch("/:id", async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    await AppointmentModel.findByIdAndUpdate(id, data);
+    res.send({ message: "Appointment updated" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
   }
 });
 
