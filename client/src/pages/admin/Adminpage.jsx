@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import AdminLogin from '../../components/Adminlogin'
-import AdmDashboard from '../../components/AdminDashMain'
+import AdminDashPage from '../dashboard/AdminDashPage'
+
+
 
 const Adminpage = (props) => {
   return (
-    <>
-    <AdminLogin/>
-    </>
     props.login ? <AdminDashPage/> : <AdminLogin />
   )
 }
