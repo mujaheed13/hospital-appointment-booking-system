@@ -2,6 +2,7 @@ const { Router } = require("express");
 
 const { is_slot_available } = require("../middleware/available-slot.js");
 const { AppointmentModel } = require("../models/appointment.model.js");
+const { authentication } = require("../middleware/authentication.js");
 const appointmentRoute = Router();
 const passport = require("../config/googleOAuth");
 
@@ -37,7 +38,7 @@ appointmentRoute.get(
 
 // ---------------------------------------------------------------------------------------
 
-appointmentRoute.get("/", async (req, res) => {
+appointmentRoute.get("/", authentication, async (req, res) => {
   try {
     const appointments = await AppointmentModel.find();
     res.send(appointments);
@@ -47,28 +48,32 @@ appointmentRoute.get("/", async (req, res) => {
   }
 });
 
+appointmentRoute.post(
+  "/:day/:doctor",
+  authentication,
+  is_slot_available,
+  async (req, res) => {
+    try {
+      const appointment = AppointmentModel(req.body);
+      await appointment.save();
+      res.send({ msg: "Appointment Booked" });
+      return;
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send({ error_msg: error.message });
+    }
+  }
+);
 
-appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
+appointmentRoute.delete("/:id", authentication, async (req, res) => {
+  const { id } = req.params;
   try {
-    const appointment = AppointmentModel(req.body);
-    await appointment.save();
-    res.send({ msg: "Appointment Booked" });
-    return;
+    await AppointmentModel.deleteOne({ _id: id });
+    res.send({ msg: "Appointment Deleted" });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ error_msg: error.message });
   }
 });
-
-appointmentRoute.delete("/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        await AppointmentModel.deleteOne({_id: id});
-        res.send({msg: "Appointment Deleted"});
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send({ error_msg: error.message });
-    }
-})
 
 module.exports = { appointmentRoute };
