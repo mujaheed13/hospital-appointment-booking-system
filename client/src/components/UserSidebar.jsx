@@ -8,9 +8,6 @@ const baseURL = "https://lifecare-mwbk.onrender.com"
 const UserSidebar = () => {
 
 
-  function handleHome() {
-    window.location.href = `${baseURL}/`
-  }
 
   return (
     <Box w="250px" h="100vh" bg="gray.800" color="white" px="4" py="6" className="sidebar">
@@ -24,7 +21,7 @@ const UserSidebar = () => {
         <Text fontWeight="bold" mb="2" >
           Main
         </Text>
-        <Flex alignItems="center" mb="2" onClick={handleHome}>
+        <Flex alignItems="center" mb="2" as={ReachLink} to={"/"}>
           <Icon as={FiHome} />
           <Text ml="2" style={{cursor:"pointer"}}>
             Home

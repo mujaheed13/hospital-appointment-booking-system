@@ -23,25 +23,14 @@ import {
       avatar:
         'https://imageup.me/images/d4053751-d520-4cb1-bd78-37edd197ceaa.jpeg',
     },
-    {
-      name: 'Time',
-      role: '11:30 am - 12:00 pm  22/04/2023',
-      content: <>
-        <h1>Doctor : Mr. Raj Kumar Sen</h1>
-        Heart Specialist (MD, MBBS)
-        <h2>Patient : Mr. Jack C</h2>
   
-      </>,
-      avatar:
-        'https://imageup.me/images/d4053751-d520-4cb1-bd78-37edd197ceaa.jpeg',
-    },
     {
       name: 'Time',
       role: '11:30 am - 12:00 pm  22/04/2023',
       content: <>
-        <h1>Doctor : Mr. Raj Kumar Sen</h1>
+        <h1>Doctor : Dr. Abhay Singh</h1>
         Heart Specialist (MD, MBBS)
-        <h2>Patient : Mr. Jack C</h2>
+        <h2>Patient : Mr. Harry</h2>
   
       </>,
       avatar:
