@@ -96,6 +96,11 @@ To run this project, you will need to add the following environment variables to
 
 https://lifecare-mwbk.onrender.com/
 
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/vNWL4lR.jpeg)
+![App Screenshot](https://i.imgur.com/BFSWz9I.jpeg)
+
 
 ## Authors
 
