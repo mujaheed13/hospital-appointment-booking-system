@@ -1,9 +1,17 @@
 import React from 'react'
+import UserDashMain from "../../components/UserDashMain"
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
-const UserDashboard = () => {
+const UserDashboardMain = () => {
   return (
-    <div>UserDashboard</div>
+    <>
+    {/* <UserSidebar> */}
+    <Navbar/>
+    <UserDashMain />
+    <Footer/>
+    </>
   )
 }
 
-export default UserDashboard
+export default UserDashboardMain

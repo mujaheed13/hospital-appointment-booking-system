@@ -9,11 +9,13 @@ import Homepage from  "../pages/homepage/Homepage"
 import Loginpage from '../pages/login/Loginpage'
 import Service from '../pages/service/Service'
 import SignupPage from "../pages/signup/SignupPage"
+import UserDashboardMain from '../pages/user/User'
 
 const AllRoute = () => {
   return (
     <Routes>
         <Route path="/" element={<Homepage/>}/>
+        <Route path="/user/dashboard" element={<UserDashboardMain />}/>
         <Route path="/login" element={<Loginpage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/appointment" element={<Appointment/>}/>
