@@ -7,25 +7,25 @@ const UserSchema = mongoose.Schema(
       // required: true,
       unique: true
     },
-    name:  {
+    name: {
       type: String,
       // required: true
     },
-    password:  {
+    password: {
       type: String,
       // required: true
     },
-    mob_no:  {
+    mob_no: {
       type: String,
       // required: true
     },
-    dob:  {
+    dob: {
       type: String,
       // required: true
     },
     role: {
       type: String,
-      // required: true
+      required: true
     }
   },
   {

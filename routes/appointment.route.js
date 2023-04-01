@@ -26,7 +26,7 @@ appointmentRoute.get(
   }),
   function (req, res) {
     // Successful authentication, redirect home.
-    // console.log(req.user);
+    console.log(req.user);
     res.redirect("/");
   }
 );
@@ -42,8 +42,8 @@ appointmentRoute.get("/", async (req, res) => {
     const appointments = await AppointmentModel.find();
     res.send(appointments);
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ error_msg: error });
+    console.log(error.message);
+    res.status(500).send({ error_msg: error.message });
   }
 });
 
@@ -55,8 +55,8 @@ appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
     res.send({ msg: "Appointment Booked" });
     return;
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ error_msg: error });
+    console.log(error.message);
+    res.status(500).send({ error_msg: error.message });
   }
 });
 
@@ -66,8 +66,8 @@ appointmentRoute.delete("/:id", async (req, res) => {
         await AppointmentModel.deleteOne({_id: id});
         res.send({msg: "Appointment Deleted"});
     } catch (error) {
-        console.log(error);
-        res.status(500).send({ error_msg: error });
+        console.log(error.message);
+        res.status(500).send({ error_msg: error.message });
     }
 })
 
