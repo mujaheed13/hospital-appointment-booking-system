@@ -16,30 +16,44 @@ import {
 import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link as ReachLink } from "react-router-dom"
+import Loginpage from '../pages/login/Loginpage';
 const baseURL = "https://lifecare-mwbk.onrender.com"
 export default function Login() {
 
   const [submitted, setSubmitted] = useState(false);
   const [email,setEmail]=useState("")
   const [pass,setPass]=useState("")
-
-
+  const [login, setLogin] = useState(false);
+ function handleOauth(e){
+  e.preventDefault();
+  window.location.href = `${baseURL}/appointments/google/auth/callback`
+ }
   async function handleSignIn() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const payload = {email,password};
+    // const payload = {email,password};
     
-    let fData = await fetch(`${baseURL}/user/login`,{
-      method:"POST",
-      "Content-type":"application/json",
-      body: JSON.stringify(payload)
-    })
+    // let fData = await fetch(`${baseURL}/user/login`,{
+    //   method:"POST",
+    //   "Content-type":"application/json",
+    //   body: JSON.stringify(payload)
+    // })
 
-    const data = await fData.json();
-    console.log(data);
-
+    // const data = await fData.json();
+    // console.log(data);
+    if (email === "admin@example.com" && password === "password") {
+      setLogin(true);
+      
+    } else {
+      alert("Invalid email or password");
+    }
   }
+
+  if (login) {
+    return <Loginpage login={true} />;
+  }
+  
   
   return (
     <Flex
@@ -60,11 +74,11 @@ export default function Login() {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl id="email" isRequired> 
               <FormLabel>Email address</FormLabel>
               <Input type="email" required />
             </FormControl>
-            <FormControl id="password">
+            <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <Input type="password" required />
             </FormControl>
@@ -84,7 +98,7 @@ export default function Login() {
                 }}>
                 Sign in
               </Button>
-              <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
+              <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} onClick={handleOauth}>
           <Center>
             <Text>Sign in with Google</Text>
           </Center>

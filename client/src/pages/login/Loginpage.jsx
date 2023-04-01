@@ -1,16 +1,11 @@
 import React from "react";
-import Contact from "../../components/Contact";
-import Footer from "../../components/Footer";
-import Login from "../../components/login";
-import Navbar from "../../components/Navbar";
+import UserDashPage from "../dashboard/UserDashPage";
+import LoginForm from "./LoginForm";
 
-const Loginpage = () => {
+
+const Loginpage = (props) => {
   return (
-    <>
-      <Navbar />
-      <Login />
-      <Footer />
-    </>
+    props.login ? <UserDashPage/> : <LoginForm/>
   );
 };
 

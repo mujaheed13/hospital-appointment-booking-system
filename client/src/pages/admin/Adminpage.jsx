@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AdminLogin from '../../components/Adminlogin'
 import AdmDashboard from '../../components/AdminDashMain'
 
-const Adminpage = () => {
+const Adminpage = (props) => {
   return (
     <>
     <AdminLogin/>
-    <AdmDashboard/>
     </>
+    props.login ? <AdminDashPage/> : <AdminLogin />
   )
 }
 

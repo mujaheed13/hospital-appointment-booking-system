@@ -9,7 +9,7 @@ doctorRoute.post("/add", authorize(["admin"]), async (req, res) => {
   try {
     const doctor = DoctorModel({ ...req.body, slots: slots });
     await doctor.save();
-    res.send({ msg: "Doctor added" });
+    res.send({ message: "Doctor added" });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error_msg: error });
@@ -30,7 +30,19 @@ doctorRoute.delete("/:id", authorize(["admin"]), async (req, res) => {
   const { id } = req.params;
   try {
     await DoctorModel.deleteOne({ _id: id });
-    res.send({ msg: "Doctor deleted" });
+    res.send({ message: "Doctor deleted" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
+  }
+});
+
+doctorRoute.patch("/:id", authorize(["admin"]), async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    await DoctorModel.findByIdAndUpdate(id, data);
+    res.send({ message: "Doctor updated" });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error_msg: error });

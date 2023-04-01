@@ -6,6 +6,7 @@ import {
     Text,
     Button,
     Icon,
+    Center,
   } from '@chakra-ui/react';
   import { Link as ReachLink } from "react-router-dom"
   export default function AppointmentHead() {
@@ -45,10 +46,11 @@ import {
             </Button>
           </Stack>
           <Flex w={'full'}>
-            <Illustration
+            {/* <Illustration
               height={{ sm: '24rem', lg: '28rem' }}
               mt={{ base: 12, sm: 16 }}
-            />
+            /> */}
+            <img width={"300px"} style={{borderRadius:50,margin:"auto"}}  src="https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=1200:*" alt="" />
           </Flex>
         </Stack>
       </Container>
