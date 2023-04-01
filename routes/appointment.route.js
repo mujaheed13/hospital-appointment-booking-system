@@ -52,7 +52,7 @@ appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
   try {
     const appointment = AppointmentModel(req.body);
     await appointment.save();
-    res.send({ msg: "Appointment Booked" });
+    res.send({ message: "Appointment Booked" });
     return;
   } catch (error) {
     console.log(error);
@@ -64,7 +64,7 @@ appointmentRoute.delete("/:id", async (req, res) => {
     const { id } = req.params;
     try {
         await AppointmentModel.deleteOne({_id: id});
-        res.send({msg: "Appointment Deleted"});
+        res.send({message: "Appointment Deleted"});
     } catch (error) {
         console.log(error);
         res.status(500).send({ error_msg: error });
