@@ -9,7 +9,6 @@ import {
   GridItem,
   Container,
 } from "@chakra-ui/react";
-import {} from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom"
 const Feature = ({ heading, text }) => {
   return (
