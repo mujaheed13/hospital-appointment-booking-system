@@ -47,7 +47,6 @@ appointmentRoute.get("/", async (req, res) => {
   }
 });
 
-
 appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
   try {
     const appointment = AppointmentModel(req.body);
@@ -61,14 +60,26 @@ appointmentRoute.post("/:day/:doctor", is_slot_available, async (req, res) => {
 });
 
 appointmentRoute.delete("/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        await AppointmentModel.deleteOne({_id: id});
-        res.send({message: "Appointment Deleted"});
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ error_msg: error });
-    }
-})
+  const { id } = req.params;
+  try {
+    await AppointmentModel.deleteOne({ _id: id });
+    res.send({ message: "Appointment Deleted" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
+  }
+});
+
+appointmentRoute.patch("/:id", async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    await AppointmentModel.findByIdAndUpdate(id, data);
+    res.send({ message: "Appointment updated" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error_msg: error });
+  }
+});
 
 module.exports = { appointmentRoute };
