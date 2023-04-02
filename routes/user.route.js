@@ -58,6 +58,7 @@ UserRouter.post("/login", async (req, res) => {
             message: "Login Successful",
             email: User.email,
             username: User.name,
+            userID: User._id,
             token
           });
         } else {
