@@ -9,17 +9,22 @@ import {
   Text,
   chakra,
 } from "@chakra-ui/react";
-
-const userIdOptions = [
-  { label: "John Doe", value: "john-doe" },
-  { label: "Jane Smith", value: "jane-smith" },
-  { label: "Bob Johnson", value: "bob-johnson" },
+import Swal from 'sweetalert2'
+import { Routes, Route, useParams } from 'react-router-dom';
+const days = [
+  { label: "Monday", value: "monday" },
+  { label: "Tuesday", value: "tuesday" },
+  { label: "Wednesday", value: "wednesday" },
+  { label: "Thursday", value: "thursday" },
+  { label: "Friday", value: "friday" },
+  { label: "Saturday", value: "saturday" },
 ];
 
 const doctorIdOptions = [
-  { label: "Dr. James Lee", value: "james-lee" },
-  { label: "Dr. Sarah Patel", value: "sarah-patel" },
-  { label: "Dr. Mark Chen", value: "mark-chen" },
+  { label: "Dr. Abhay Singh", value: "6425263f615a7f356b1ed68c" },
+  { label: "Dr. Mohima Bahadur", value: "64299fd427df2a6e5cf9ccb0" },
+  { label: "Dr. Raj Kumar Sen", value: "64299f5427df2a6e5cf9ccaa" },
+  { label: "Dr. Mohammad Mujaheed", value: "64299f7d27df2a6e5cf9ccac" },
 ];
 
 const appointmentSlotOptions = [
@@ -27,45 +32,42 @@ const appointmentSlotOptions = [
   { label: "10:00 AM - 11:00 AM", value: "10-11" },
   { label: "11:00 AM - 12:00 PM", value: "11-12" },
 ];
-// const baseURL = "https://lifecare-mwbk.onrender.com"
-const baseURL = "http://localhost:8080"
+
+
+const baseURL = "https://lifecare-mwbk.onrender.com"
+// const baseURL = "http://localhost:8080"
+let userData=JSON.parse(localStorage.getItem("userdata"))
+// let token=userData.token
 
 function AppointmentForm() {
-  const [userId, setUserId] = useState("");
   const [doctorId, setDoctorId] = useState("");
   const [appointmentSlot, setAppointmentSlot] = useState("");
-
-
+  const [day,setDay]=useState("")
+  
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("User ID:", userId);
-    console.log("Doctor ID:", doctorId);
-    console.log("Appointment Slot:", appointmentSlot);
-    // TODO: Add logic to submit form data to server
-
-    const obj = { user_id: userId, doctor_id: doctorId, appointment_slot: {Time:appointmentSlot} }
+    const obj = {doctor_id: doctorId, appointment_slot: {day:day,Time:appointmentSlot} }
     handleData(obj);
-
-
   }
-
+  
   async function handleData(obj) {
 
-    const setData = await fetch(`${baseURL}/appointments/mon/john`, {
+    const setData = await fetch(`${baseURL}/appointments/${day}/${doctorId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`
+        Authorization: `bearer ${userData.token}`
       },
       body: JSON.stringify(obj)
     })
 
     const data = await setData.json();
 
-    console.log(data);
+    Swal.fire(data.msg); 
   }
 
 
+  
   return (
     <Box maxW="md" mx="auto" mt="6" textAlign={"center"}>
       <chakra.h2 fontSize="3xl" fontWeight="700" mb={10}>
@@ -73,13 +75,13 @@ function AppointmentForm() {
       </chakra.h2>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
-          <FormLabel>User ID</FormLabel>
+          <FormLabel>Day</FormLabel>
           <Select
-            placeholder="Select user ID"
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
+            placeholder="Select appointment day"
+            value={day}
+            onChange={(event) => setDay(event.target.value)}
           >
-            {userIdOptions.map((option) => (
+            {days.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
