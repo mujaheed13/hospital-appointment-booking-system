@@ -28,7 +28,7 @@ appointmentRoute.get(
   function (req, res) {
     // Successful authentication, redirect home.
     console.log(req.user);
-    res.redirect("/");
+    res.redirect("/dashboard");
   }
 );
 
