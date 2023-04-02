@@ -5,9 +5,9 @@ import AdmDashboard from '../../components/AdminDashMain'
 const Adminpage = (props) => {
   return (
     <>
-    <AdminLogin/>
+    
+    {props.login ? <AdmDashboard/> : <AdminLogin />}
     </>
-    props.login ? <AdminDashPage/> : <AdminLogin />
   )
 }
 
