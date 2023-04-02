@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(process.env.port || 1337, async () => {
+app.listen(process.env.port || 1337 || 8080, async () => {
   try {
     await connection;
     console.log("Connected To DB");
