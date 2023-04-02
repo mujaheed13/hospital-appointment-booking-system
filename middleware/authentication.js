@@ -14,7 +14,7 @@ const authentication = (req, res, next) => {
   const decoded = jwt.verify(token, process.env.key);
   
   const userrole = decoded?.role;
-  console.log("here", userrole);
+  // console.log("here", userrole);
   req.body.userrole = userrole;
 
   if (decoded) {

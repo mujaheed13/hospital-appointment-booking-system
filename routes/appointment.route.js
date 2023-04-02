@@ -44,7 +44,6 @@ appointmentRoute.get("/", authentication, async (req, res) => {
   }
 });
 
-
 appointmentRoute.post(
   "/:day/:doctor",
   authentication,
@@ -53,6 +52,7 @@ appointmentRoute.post(
     try {
       const appointment = AppointmentModel(req.body);
       await appointment.save();
+    console.log("heyyyy1", req.body);
       res.send({ msg: "Appointment Booked" });
       return;
     } catch (error) {
@@ -72,8 +72,6 @@ appointmentRoute.delete("/:id", authentication, async (req, res) => {
     res.status(500).send({ error_msg: error.message });
   }
 });
-
-
 
 appointmentRoute.patch("/:id", async (req, res) => {
   const { id } = req.params;

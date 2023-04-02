@@ -2,11 +2,14 @@ const { DoctorModel } = require("../models/doctor.model.js");
 
 const is_slot_available = async (req, res, next) => {
   let { day, doctor } = req.params;
-
-  doctor = doctor.toLowerCase();
   day = day.toLowerCase();
+  if (day!=="monday" && day!=="tuesday" && day!=="wednesday" && day!=="thursday" && day!=="friday" && day!=="saturday"){
+    res.send("Not a valid day");
+    return;
+  }
 
-  const data = await DoctorModel.findOne({ name: doctor });
+
+  const data = await DoctorModel.findOne({ _id: doctor });
 
   data?.slots?.forEach( async (el) => {
 
