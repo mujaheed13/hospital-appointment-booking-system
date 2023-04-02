@@ -13,7 +13,7 @@ require('dotenv').config();
 //Middlewares
 app.use(express.json());
 app.use(cors());
-app.use("/appointments", authentication);
+// app.use("/appointments", authentication);
 app.use("/doctors", authentication);
 
 //Routes
