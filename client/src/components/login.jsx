@@ -26,7 +26,7 @@ export default function Login() {
   const [login, setLogin] = useState(false);
  function handleOauth(e){
   e.preventDefault();
-  window.location.href = `${baseURL}/appointments/google/auth/callback`
+  window.location.href = `${baseURL}/appointments/google/auth`
  }
   async function handleSignIn() {
     const email = document.getElementById('email').value;
