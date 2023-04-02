@@ -31,7 +31,7 @@ UserRouter.post("/register", async (req, res) => {
           role: role || "patient"
         });
         await User.save();
-        res.send({ message: `Register Sucessfull` });
+        res.send({ message: `Register Successful` });
       }
     });
     // console.log(hash)
@@ -45,7 +45,6 @@ UserRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     let User = await userModel.findOne({ email: email });
-    console.log(User);
     if (User) {
       bcrypt.compare(password, User.password, async (err, result) => {
         if (result) {
@@ -55,9 +54,8 @@ UserRouter.post("/login", async (req, res) => {
             process.env.key
           ); //{expiresIn:60}
           await client.SET(User.email, token);
-          console.log("tokens are done");
           res.send({
-            message: "Login Sucessfull",
+            message: "Login Successful",
             email: User.email,
             username: User.name,
             token
@@ -81,7 +79,7 @@ UserRouter.get("/logout", async (req, res) => {
     if (token) {
       await client.lPush("blackList", token);
 
-      res.send({ message: "Logout Sucesfull" });
+      res.send({ message: "Logout Successful" });
     } else {
       res.send({ message: "Login Again" });
     }

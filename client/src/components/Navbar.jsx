@@ -8,6 +8,13 @@ import {
   Collapse,
   Icon,
   Link,
+  Wrap,
+  WrapItem,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -15,6 +22,7 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
+
 import {
   HamburgerIcon,
   CloseIcon,
@@ -23,8 +31,11 @@ import {
 } from '@chakra-ui/icons';
 import { Link as ReachLink } from "react-router-dom"
 import logo from "../assets/logo.png";
+import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 export default function Test() {
   const { isOpen, onToggle } = useDisclosure();
+  const userdata = JSON.parse(localStorage.getItem("userdata")) || null;
+  let token = userdata?.token;
 
   return (
     <Box>
@@ -57,8 +68,8 @@ export default function Test() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}>
             <Link as={ReachLink} to='/'>
-          <img width={'70px'} src={logo} alt="logo" />
-        </Link>
+              <img width={'70px'} src={logo} alt="logo" />
+            </Link>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -66,7 +77,35 @@ export default function Test() {
           </Flex>
         </Flex>
 
-        <Stack
+        {token ? <Stack
+          flex={{ base: 1, md: 0 }}
+          justify={'flex-end'}
+          direction={'row'}
+          spacing={6} >
+          <Flex alignItems={'center'}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={'full'}
+                variant={'link'}
+                cursor={'pointer'}
+                minW={0}>
+                <Avatar
+                  size={'sm'}
+                  src={
+                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                  }
+                />
+              </MenuButton>
+              <MenuList>
+                <MenuItem>{userdata?.username}</MenuItem>
+                <MenuItem>{userdata?.email}</MenuItem>
+                <MenuDivider />
+                <MenuItem>Patient</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </Stack> : (<Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
@@ -92,7 +131,8 @@ export default function Test() {
             }}>
             Sign Up
           </Button>
-        </Stack>
+        </Stack>)
+        }
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -114,7 +154,7 @@ const DesktopNav = () => {
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
-              as={ReachLink}
+                as={ReachLink}
                 p={2}
                 to={navItem.to ?? '#'}
                 fontSize={'sm'}
@@ -153,7 +193,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, to, subLabel }) => {
   return (
     <Link
-    as={ReachLink}
+      as={ReachLink}
       to={to}
       role={'group'}
       display={'block'}
@@ -258,12 +298,12 @@ const NAV_ITEMS = [
       {
         label: 'Our Staff',
         subLabel: 'Meet Our Expert Team',
-  to: '/doctor',
+        to: '/doctor',
       },
       {
         label: 'Department',
         subLabel: '',
-  to: '/doctor',
+        to: '/doctor',
       },
     ],
   },

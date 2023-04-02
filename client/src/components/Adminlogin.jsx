@@ -63,11 +63,11 @@ export default function AdminLogin() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" required />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input type="password" required />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -75,7 +75,7 @@ export default function AdminLogin() {
                 align={"start"}
                 justify={"space-between"}
               >
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox required>Remember me</Checkbox>
                 <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
               <Button

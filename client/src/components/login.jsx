@@ -17,44 +17,59 @@ import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link as ReachLink } from "react-router-dom"
 import Loginpage from '../pages/login/Loginpage';
-const baseURL = "https://lifecare-mwbk.onrender.com"
+import { Navigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+
+// import ReachLink from "react-router-dom";
+
+const baseURL = "http://localhost:8080"
+// const baseURL = "https://lifecare-mwbk.onrender.com"
 export default function Login() {
+  
 
   const [submitted, setSubmitted] = useState(false);
-  const [email,setEmail]=useState("")
-  const [pass,setPass]=useState("")
+  const [email, setEmail] = useState("")
+  const [pass, setPass] = useState("")
   const [login, setLogin] = useState(false);
- function handleOauth(e){
-  e.preventDefault();
-  window.location.href = `${baseURL}/appointments/google/auth`
- }
+  function handleOauth(e) {
+    e.preventDefault();
+    window.location.href = `${baseURL}/appointments/google/auth`
+  }
   async function handleSignIn() {
+
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    try {
+      const payload = { email, password };
+      console.log(payload);
 
-    // const payload = {email,password};
-    
-    // let fData = await fetch(`${baseURL}/user/login`,{
-    //   method:"POST",
-    //   "Content-type":"application/json",
-    //   body: JSON.stringify(payload)
-    // })
+      let fData = await fetch(`${baseURL}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+      })
 
-    // const data = await fData.json();
-    // console.log(data);
-    if (email === "admin@example.com" && password === "password") {
-      setLogin(true);
-      
-    } else {
-      alert("Invalid email or password");
+      const data = await fData.json();
+      console.log(data);
+      localStorage.setItem("userdata",JSON.stringify(data));
+
+      Swal.fire(data.message); // for alert 
+      if (data.message == "Login Successful") {
+        setLogin(true);
+      }
+
+    } catch (error) {
+      alert(error)
     }
-  }
 
-  if (login) {
+  }
+  if (login) {    
     return <Loginpage login={true} />;
   }
-  
-  
+
+
   return (
     <Flex
       minH={'100vh'}
@@ -65,7 +80,7 @@ export default function Login() {
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Sign in to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to Book an <Link as={ReachLink} to={"/appointment"}color={'blue.400'}>Appointment</Link> ✌️
+            to Book an <Link as={ReachLink} to={"/appointment"} color={'blue.400'}>Appointment</Link> ✌️
           </Text>
         </Stack>
         <Box
@@ -74,7 +89,7 @@ export default function Login() {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="email" isRequired> 
+            <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type="email" required />
             </FormControl>
@@ -87,7 +102,7 @@ export default function Login() {
                 direction={{ base: 'column', sm: 'row' }}
                 align={'start'}
                 justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox required>Remember me</Checkbox>
                 <Link color={'blue.400'}>Forgot password?</Link>
               </Stack>
               <Button onClick={handleSignIn}
@@ -99,16 +114,16 @@ export default function Login() {
                 Sign in
               </Button>
               <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />} onClick={handleOauth}>
-          <Center>
-            <Text>Sign in with Google</Text>
-          </Center>
-        </Button>
+                <Center>
+                  <Text>Sign in with Google</Text>
+                </Center>
+              </Button>
             </Stack>
           </Stack>
         </Box>
       </Stack>
     </Flex>
-    
+
   );
 }
 

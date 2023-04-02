@@ -27,11 +27,14 @@ const appointmentSlotOptions = [
   { label: "10:00 AM - 11:00 AM", value: "10-11" },
   { label: "11:00 AM - 12:00 PM", value: "11-12" },
 ];
+// const baseURL = "https://lifecare-mwbk.onrender.com"
+const baseURL = "http://localhost:8080"
 
 function AppointmentForm() {
   const [userId, setUserId] = useState("");
   const [doctorId, setDoctorId] = useState("");
   const [appointmentSlot, setAppointmentSlot] = useState("");
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -39,13 +42,35 @@ function AppointmentForm() {
     console.log("Doctor ID:", doctorId);
     console.log("Appointment Slot:", appointmentSlot);
     // TODO: Add logic to submit form data to server
+
+    const obj = { user_id: userId, doctor_id: doctorId, appointment_slot: {Time:appointmentSlot} }
+    handleData(obj);
+
+
   }
+
+  async function handleData(obj) {
+
+    const setData = await fetch(`${baseURL}/appointments/mon/john`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`
+      },
+      body: JSON.stringify(obj)
+    })
+
+    const data = await setData.json();
+
+    console.log(data);
+  }
+
 
   return (
     <Box maxW="md" mx="auto" mt="6" textAlign={"center"}>
-     <chakra.h2 fontSize="3xl" fontWeight="700" mb={10}>
+      <chakra.h2 fontSize="3xl" fontWeight="700" mb={10}>
         Schedule an appointment
-        </chakra.h2>
+      </chakra.h2>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>User ID</FormLabel>

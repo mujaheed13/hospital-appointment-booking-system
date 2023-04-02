@@ -26,15 +26,11 @@ appointmentRoute.get(
     session: false,
   }),
   function (req, res) {
-    // Successful authentication, redirect home.
-    console.log(req.user);
     res.redirect("/dashboard");
   }
 );
 
-// appointmentRoute.get("/google/auth", (req, res) => {
-//   res.send("OAuth Done Succsfully Redirecting To Dashboard");
-// });
+
 
 // ---------------------------------------------------------------------------------------
 
