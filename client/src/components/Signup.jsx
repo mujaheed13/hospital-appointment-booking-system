@@ -17,6 +17,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {Link as ReachLink} from 'react-router-dom'
+import Swal from 'sweetalert2'
 const baseURL = "https://lifecare-mwbk.onrender.com"
 
 export default function Signup() {
@@ -43,7 +44,7 @@ export default function Signup() {
     });
 
     const data = await fData.json();
-    console.log(data);
+    Swal.fire(data.message)
     
   }
 

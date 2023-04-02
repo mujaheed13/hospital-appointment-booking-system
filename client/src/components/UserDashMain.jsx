@@ -15,7 +15,7 @@ const testimonials = [
     name: 'Time',
     role: '11:30 am - 12:00 pm  22/04/2023',
     content: <>
-      <h1>Doctor : Mr. Raj Kumar Sen</h1>
+      <h1>Doctor : Dr. Raj Kumar Sen</h1>
       Heart Specialist (MD, MBBS)
       <h2>Patient : Mr. Jack C</h2>
 
@@ -27,8 +27,8 @@ const testimonials = [
     name: 'Time',
     role: '11:30 am - 12:00 pm  22/04/2023',
     content: <>
-      <h1>Doctor : Mr. Raj Kumar Sen</h1>
-      Heart Specialist (MD, MBBS)
+      <h1>Doctor : Dr. Abhay Singh</h1>
+      Neurologist(MD, MBBS)
       <h2>Patient : Mr. Jack C</h2>
 
     </>,
@@ -39,8 +39,8 @@ const testimonials = [
     name: 'Time',
     role: '11:30 am - 12:00 pm  22/04/2023',
     content: <>
-      <h1>Doctor : Mr. Raj Kumar Sen</h1>
-      Heart Specialist (MD, MBBS)
+      <h1>Doctor : Dr. Hassan Khan</h1>
+      Dentist (MD, MBBS)
       <h2>Patient : Mr. Jack C</h2>
 
     </>,
@@ -51,8 +51,8 @@ const testimonials = [
     name: 'Time',
     role: '11:30 am - 12:00 pm  22/04/2023',
     content: <>
-      <h1>Doctor : Mr. Raj Kumar Sen</h1>
-      Heart Specialist (MD, MBBS)
+      <h1>Doctor : Dr. Mujaheed</h1>
+      Orthopaedic surgeons (MD, MBBS)
       <h2>Patient : Mr. Jack C</h2>
 
     </>,
@@ -63,8 +63,8 @@ const testimonials = [
     name: 'Time',
     role: '11:30 am - 12:00 pm  22/04/2023',
     content: <>
-      <h1>Doctor : Mr. Raj Kumar Sen</h1>
-      Heart Specialist (MD, MBBS)
+      <h1>Doctor : Dr. Ravat </h1>
+       (MD, MBBS)
       <h2>Patient : Mr. Jack C</h2>
 
     </>,
