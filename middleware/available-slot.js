@@ -8,7 +8,7 @@ const is_slot_available = async (req, res, next) => {
     return;
   }
 
-
+console.log(day,doctor);
   const data = await DoctorModel.findOne({ _id: doctor });
 
   data?.slots?.forEach( async (el) => {
