@@ -16,7 +16,7 @@ const AdminSidebar = () => {
   const handleToggle = () => setIsOpen(!isOpen);
 
   return (
-    <Flex h="100vh" flexDir="column">
+    <Flex flexDir="column">
       <Box
         as="nav"
         w="60"
@@ -49,10 +49,7 @@ const AdminSidebar = () => {
         />
         
       </Box>
-      <Box ml="60" p="4">
-        {/* Your content here */}
-        test
-      </Box>
+      {/* <Box ml="60" p="4">Your content here</Box> */}
     </Flex>
   );
 };
