@@ -3,14 +3,11 @@ import {
   Box,
   FormControl,
   FormLabel,
-  Input,
   Select,
   Button,
-  Text,
   chakra,
 } from "@chakra-ui/react";
 import Swal from 'sweetalert2'
-import { Routes, Route, useParams } from 'react-router-dom';
 const days = [
   { label: "Monday", value: "monday" },
   { label: "Tuesday", value: "tuesday" },
