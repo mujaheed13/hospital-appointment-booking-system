@@ -1,7 +1,5 @@
 
-# Life Care 
-
-![LIfe-CareLogo-removebg-preview](https://user-images.githubusercontent.com/112754393/229430465-403b4f1b-2cae-4a73-9596-386e52e7aea8.png)
+# Life Care ![LIfe-CareLogo](https://user-images.githubusercontent.com/112754393/229430313-511dbf82-278d-41ab-87b5-02985e067591.png)
 
 
 Life Care Hospital is one of the renowned and leading multispecialty hospitals comprising more than five topmost specialties
@@ -107,6 +105,9 @@ https://lifecare-mwbk.onrender.com/
 
 ## Workflow Diagram
 ![image](https://user-images.githubusercontent.com/112754393/229429364-4f9e7424-d5b2-4386-aad8-b4f7f22c19bf.png)
+
+## System Architecture
+<img width="611" alt="Screenshot 2023-04-03 120759" src="https://user-images.githubusercontent.com/112754547/229430414-657410a1-ad72-4075-a310-e9cec8e317c1.png">
 
 
 ## Authors
