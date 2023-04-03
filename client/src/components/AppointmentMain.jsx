@@ -34,8 +34,8 @@ const appointmentSlotOptions = [
 ];
 
 
-const baseURL = "https://lifecare-mwbk.onrender.com"
-// const baseURL = "http://localhost:8080"
+// const baseURL = "https://lifecare-mwbk.onrender.com"
+const baseURL = "http://localhost:8080"
 let userData=JSON.parse(localStorage.getItem("userdata"))
 // let token=userData.token
 

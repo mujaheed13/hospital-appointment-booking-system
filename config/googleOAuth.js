@@ -12,7 +12,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://lifecare-mwbk.onrender.com/appointments/google/auth/callback",
+      // callbackURL: "https://lifecare-mwbk.onrender.com/appointments/google/auth/callback",
+      callbackURL: "http://localhost:8080/appointments/google/auth/callback",
     },
     async (accessToken, refreshToken, profile, cb) => {
       let email = profile._json.email;

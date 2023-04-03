@@ -22,6 +22,8 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import Swal from 'sweetalert2'
+
 
 import {
   HamburgerIcon,
@@ -36,6 +38,13 @@ export default function Test() {
   const { isOpen, onToggle } = useDisclosure();
   const userdata = JSON.parse(localStorage.getItem("userdata")) || null;
   let token = userdata?.token;
+
+  function handleLogout(){
+    localStorage.removeItem("userdata");
+    Swal.fire("Logout Successful"); // for alert 
+    window.location.reload();
+
+  }
 
   return (
     <Box>
@@ -101,7 +110,7 @@ export default function Test() {
                 <MenuItem>{userdata?.username}</MenuItem>
                 <MenuItem>{userdata?.email}</MenuItem>
                 <MenuDivider />
-                <MenuItem>Patient</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
