@@ -1,7 +1,6 @@
 
 # Life Care 
-
-![image](https://user-images.githubusercontent.com/112754393/229431557-098be71d-e3ea-4a1b-9045-f97299e90aba.png)
+![LIfe-CareLogo-removebg-preview](https://user-images.githubusercontent.com/112754393/229431189-6c536ace-fc26-4ff0-87ec-a041eaf601d4.png)
 
 
 
@@ -110,7 +109,9 @@ https://lifecare-mwbk.onrender.com/
 ![image](https://user-images.githubusercontent.com/112754393/229429364-4f9e7424-d5b2-4386-aad8-b4f7f22c19bf.png)
 
 ## System Architecture
-<img width="611" alt="Screenshot 2023-04-03 120759" src="https://user-images.githubusercontent.com/112754547/229430414-657410a1-ad72-4075-a310-e9cec8e317c1.png">
+<img width="612" alt="image" src="https://user-images.githubusercontent.com/112754547/229432036-ff9a6ff1-3143-49ec-be31-4750e3c3c7b5.png">
+
+
 
 
 ## Authors
