@@ -34,15 +34,14 @@ const appointmentSlotOptions = [
 const baseURL = "https://lifecare-mwbk.onrender.com";
 // const baseURL = "http://localhost:8080"
 let userData=JSON.parse(localStorage.getItem("userdata"))
-// let token=userData.token
-
-// console.log(userData.token);
+let token=userData?.token
+console.log(token);
 
 function AppointmentForm() {
   const [doctorId, setDoctorId] = useState("");
   const [appointmentSlot, setAppointmentSlot] = useState("");
   const [day,setDay]=useState("")
-  
+  console.log(day,doctorId);
   function handleSubmit(event) {
     event.preventDefault();
     const obj = {doctor_id: doctorId, appointment_slot: {day:day,Time:appointmentSlot}, user_id: userData.userID }
@@ -55,7 +54,7 @@ function AppointmentForm() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `bearer ${userData.token}`
+        Authorization: `bearer ${token}`
       },
       body: JSON.stringify(obj)
     })
