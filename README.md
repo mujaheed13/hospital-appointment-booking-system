@@ -102,6 +102,10 @@ https://lifecare-mwbk.onrender.com/
 ![App Screenshot](https://i.imgur.com/BFSWz9I.jpeg)
 
 
+## HLD Diagram
+![image](https://user-images.githubusercontent.com/112754393/229429364-4f9e7424-d5b2-4386-aad8-b4f7f22c19bf.png)
+
+
 ## Authors
 
 - [@Abhay Singh](https://github.com/DanteHaxor)
