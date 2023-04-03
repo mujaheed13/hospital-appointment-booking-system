@@ -110,7 +110,8 @@ https://lifecare-mwbk.onrender.com/
 ![image](https://user-images.githubusercontent.com/112754393/229429364-4f9e7424-d5b2-4386-aad8-b4f7f22c19bf.png)
 
 ## System Architecture
-<img width="612" alt="Screenshot 2023-04-03 121544" src="https://user-images.githubusercontent.com/112754547/229432642-97e05ba8-530c-436d-92c5-42f1c030761a.png">
+
+![image](https://i.imgur.com/oJW6QQe.jpeg)
 
 
 
