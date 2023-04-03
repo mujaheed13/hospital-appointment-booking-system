@@ -5,7 +5,7 @@ const doctorRoute = Router();
 const { slots } = require("../utils/slots.js");
 
 
-doctorRoute.post("/add", authorize(["admin"]), async (req, res) => {
+doctorRoute.post("/add", async (req, res) => {
   try {
     const doctor = DoctorModel({ ...req.body, slots: slots });
     await doctor.save();
@@ -16,7 +16,7 @@ doctorRoute.post("/add", authorize(["admin"]), async (req, res) => {
   }
 });
 
-doctorRoute.get("/", authorize(["admin"]), async (req, res) => {
+doctorRoute.get("/", async (req, res) => {
   try {
     const doctors = await DoctorModel.find();
     res.send(doctors);
@@ -26,7 +26,7 @@ doctorRoute.get("/", authorize(["admin"]), async (req, res) => {
   }
 });
 
-doctorRoute.delete("/:id", authorize(["admin"]), async (req, res) => {
+doctorRoute.delete("/:id",  async (req, res) => {
   const { id } = req.params;
   try {
     await DoctorModel.deleteOne({ _id: id });
@@ -37,7 +37,7 @@ doctorRoute.delete("/:id", authorize(["admin"]), async (req, res) => {
   }
 });
 
-doctorRoute.patch("/:id", authorize(["admin"]), async (req, res) => {
+doctorRoute.patch("/:id",  async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   try {

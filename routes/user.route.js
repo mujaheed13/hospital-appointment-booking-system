@@ -17,7 +17,7 @@ UserRouter.post("/register", async (req, res) => {
   const { email, name, password, mob_no, dob, role } = req.body;
 
   try {
-    bcrypt.hash(password, +process.env.sRound, async (err, hash) => {
+    bcrypt.hash(password, process.env.sRound, async (err, hash) => {
       if (err) {
         console.log({ message: err.message });
         res.send({ message: err.message });
@@ -58,6 +58,7 @@ UserRouter.post("/login", async (req, res) => {
             message: "Login Successful",
             email: User.email,
             username: User.name,
+            userID: User._id,
             token
           });
         } else {
