@@ -1,5 +1,6 @@
 
-# Life Care
+# Life Care ![LIfe-CareLogo](https://user-images.githubusercontent.com/112754393/229430313-511dbf82-278d-41ab-87b5-02985e067591.png)
+
 
 Life Care Hospital is one of the renowned and leading multispecialty hospitals comprising more than five topmost specialties
 
