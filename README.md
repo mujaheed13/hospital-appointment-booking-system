@@ -1,6 +1,7 @@
 
 # Life Care 
-![LIfe-CareLogo-removebg-preview](https://user-images.githubusercontent.com/112754393/229431189-6c536ace-fc26-4ff0-87ec-a041eaf601d4.png)
+
+![image](https://user-images.githubusercontent.com/112754393/229431557-098be71d-e3ea-4a1b-9045-f97299e90aba.png)
 
 
 
