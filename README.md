@@ -15,6 +15,7 @@ Life Care Hospital is one of the renowned and leading multispecialty hospitals c
 - Responsive
 - Authorization
 - Authentication
+- Google OAuth
 
 
 ## Tech Stack
